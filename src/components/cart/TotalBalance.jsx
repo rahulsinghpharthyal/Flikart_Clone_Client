@@ -1,81 +1,50 @@
-import { Typography, Box, styled } from "@mui/material";
-import React, { useEffect, useState } from "react";
-
-const Header = styled(Box)`
-  padding: 15px 24px;
-  background: #fff;
-  border-bottom: 1px solid #f0f0f0;
-`;
-
-const Heading = styled(Typography)`
-  color: #878787;
-`;
-
-const Container = styled(Box)`
-  padding: 15px 24px;
-  background: #fff;
-  & > p {
-    margin-bottom: 20px;
-    font-size: 14px;
-  }
-  & > h6 {
-    margin-bottom: 20px;
-  }
-`;
-
-const Discount = styled(Typography)`
-  color: green;
-  font-weight: 500;
-`;
-
-const Price = styled(Box)`
-  float: right;
-`;
+import React, { useEffect, useState } from 'react';
 
 const TotalBalance = ({ cartItems }) => {
+  const [price, setPrice] = useState(0);
+  const [discount, setDiscount] = useState(0);
 
-    const [price, setPrice] = useState(0);
-    const [discount, setDiscount] = useState(0);
+  useEffect(() => {
+    totalAmount();
+  }, [cartItems]);
 
-    useEffect(()=>{
-        totalAmount();
-    }, [cartItems])
-
-    const totalAmount = () => {
-        let price = 0, discount = 0;
-        cartItems.map((item, index)=>{
-            price += item.price.mrp;
-            discount += (item.price.mrp - item.price.cost)
-        });
-        setPrice(price);
-        setDiscount(discount);
-    }
+  const totalAmount = () => {
+    let price = 0, discount = 0;
+    cartItems.forEach((item) => {
+      price += item.price.mrp;
+      discount += (item.price.mrp - item.price.cost);
+    });
+    setPrice(price);
+    setDiscount(discount);
+  };
 
   return (
-    <Box>
-      <Header>
-        <Heading>PRICE DETAILS</Heading>
-      </Header>
-      <Container>
-        <Typography>
+    <div className="bg-white p-4">
+      <div className="border-b border-gray-200 pb-2 mb-4">
+        <h2 className="text-gray-600 text-lg font-medium">PRICE DETAILS</h2>
+      </div>
+      <div>
+        <p className="text-sm mb-4 flex justify-between">
           Price ({cartItems?.length} item)
-          <Price component="span">₹{price}</Price>
-        </Typography>
-        <Typography>
+          <span>₹{price}</span>
+        </p>
+        <p className="text-sm mb-4 flex justify-between">
           Discount
-          <Price component="span">₹{discount}</Price>
-        </Typography>
-        <Typography>
+          <span className="text-green-500">₹{discount}</span>
+        </p>
+        <p className="text-sm mb-4 flex justify-between">
           Delivery Charges
-          <Price component="span">₹40</Price>
-        </Typography>
-        <Typography variant="h6">
+          <span>₹40</span>
+        </p>
+        <p className="text-base font-semibold mb-4 flex justify-between">
           Total Amount
-          <Price component="span">₹{price- discount + 40}</Price>
-        </Typography>
-        <Discount>You will save ₹{discount-40}</Discount>
-      </Container>
-    </Box>
+          <span>₹{price - discount + 40}</span>
+        </p>
+        <p className="text-green-500 font-medium">
+          You will save ₹{discount - 40}
+        </p>
+      </div>
+    </div>
   );
 };
 

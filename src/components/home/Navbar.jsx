@@ -1,45 +1,19 @@
 import React from 'react';
 import { navData } from '../../constants/data';
-import { Box, styled, Typography} from '@mui/material';
-
-
-const ImgBox = styled(Box)(({theme})=>({
-    display: 'flex',
-    margin: '55px 130px 0 130px',
-    justifyContent: 'space-between',
-    overflow: 'hidden',
-   
-    [theme.breakpoints.down('lg')]: {
-        margin: 0
-    }
-}))
-   
-const Container = styled(Box)`
-    padding: 12px 8px;
-    text-align: center;
-`
-const Text = styled(Typography)`
-    font-size: 14px;
-    font-weight: bold;
-    font-family: inherit;
-    text-align: center;
-`
-
-
 
 const Navbar = () => {
   return (
-    <Box style={{ background: "#fff" }}>
-      <ImgBox>
+    <div className="bg-white">
+      <div className="flex justify-between overflow-hidden mt-14 mx-32 lg:mx-0">
         {navData.map((value, index) => (
-          <Container style={{ textAlign: "center" }} key={index}>
-            <img src={value.url} alt="img" style={{ height: 125 }}></img>
-            <Text>{value.text}</Text>
-          </Container>
+          <div key={index} className="p-3 text-center">
+            <img src={value.url} alt="img" className="h-32" />
+            <p className="text-sm font-bold">{value.text}</p>
+          </div>
         ))}
-      </ImgBox>
-    </Box>
+      </div>
+    </div>
   );
 }
 
-export default Navbar
+export default Navbar;

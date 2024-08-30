@@ -1,65 +1,48 @@
 import React from 'react';
-import { Box, Button, Typography, styled } from "@mui/material";
+import { useDispatch } from 'react-redux';
 import { addEllipsis } from '../../utils/common-utils';
 import GroupOfButton from './GroupOfButton';
 import { removeFromCart } from '../../redux/actions/cartAction';
-import { useDispatch } from 'react-redux';
 
-const Component = styled(Box)`
-    border-top: 1px solid #f0f0f0;
-    display: flex;
-    background: #fff;
+const CartItem = ({ item }) => {
+  const dispatch = useDispatch();
 
-`
-const LeftComponent = styled(Box)`
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-`
-const SellerText = styled(Typography)`
-    color: #878787;
-    font-size: 14px;
-    margin-top: 10px;
+  const removeItemFromCart = (id) => {
+    dispatch(removeFromCart(id));
+  }
 
-`;
-
-const Remove = styled(Button)`
-    margin-top: 20px;
-    font-size: 16px;
-    color: #000;
-    font-weight: 600;
-`
-const RightComponent = styled(Box)`
-
-`
-
-const CartItem = ({item}) => {
-
-    const dispatch = useDispatch();
-
-    const removeItemFromCart = (id) => {
-        dispatch(removeFromCart(id));
-    }
   return (
-    <Component>
-        <LeftComponent>
-            <img src={item.url} alt='product' style={{height: 110, width: 110}}/>
-            <GroupOfButton/>
-        </LeftComponent>
-        <Box style={{margin: 20}}>
-            <Typography>{addEllipsis(item.title.longTitle)}</Typography>
-            <SellerText>Seller:RetailNet
-                <Box component='span'><img src='https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png' alt='fliplkartassured' style={{width: 50, display:'inherit', marginLeft: 10, marginBottom: 10}}/></Box>
-            </SellerText>
-            <Typography style={{margin: '20px 0'}}> 
-                <Box component='span' style={{fontWeight: 600, fontSize: 18}}>₹{item.price.cost}</Box>&nbsp;&nbsp;&nbsp;
-                <Box component='span' style={{color: '#878787'}}><strike>₹{item.price.mrp}</strike></Box>&nbsp;&nbsp;&nbsp;
-                <Box component='span' style={{color: '#388e3c'}}>{item.price.discount}</Box>
-            </Typography>
-            <Remove onClick={()=>removeItemFromCart(item.id)}>Remove</Remove>
-        </Box>
-    </Component>
-  )
+    <div className="flex bg-white border-t border-gray-200">
+      <div className="flex flex-col m-5">
+        <img src={item.url} alt='product' className="h-28 w-28" />
+        <GroupOfButton />
+      </div>
+      <div className="m-5 flex-1">
+        <p className="text-base font-normal">{addEllipsis(item.title.longTitle)}</p>
+        <p className="text-gray-600 text-sm mt-2">
+          Seller: RetailNet
+          <span className="inline-block ml-2 mb-2">
+            <img
+              src='https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png'
+              alt='fliplkartassured'
+              className="w-12"
+            />
+          </span>
+        </p>
+        <p className="my-5">
+          <span className="font-semibold text-lg">₹{item.price.cost}</span>&nbsp;&nbsp;&nbsp;
+          <span className="text-gray-600 line-through">₹{item.price.mrp}</span>&nbsp;&nbsp;&nbsp;
+          <span className="text-green-600">{item.price.discount}</span>
+        </p>
+        <button
+          onClick={() => removeItemFromCart(item.id)}
+          className="text-black text-base font-semibold mt-5"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default CartItem;

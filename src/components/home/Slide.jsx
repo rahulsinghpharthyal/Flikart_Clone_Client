@@ -2,10 +2,8 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Countdown from "react-countdown";
-import Divider from "@mui/material/Divider";
-
-import {Link} from 'react-router-dom';
-import { Box, Typography, Button, styled } from "@mui/material";
+import { Link } from "react-router-dom";
+import { Divider } from "@mui/material"; // Keeping this as it's part of MUI; can replace with a <hr> tag if needed
 
 const responsive = {
   desktop: {
@@ -22,77 +20,33 @@ const responsive = {
   },
 };
 
-const Component = styled(Box)`
-  margin-top: 10px;
-  background: #fff;
-`;
-
-const Deal = styled(Box)`
-  padding: 15px 20px;
-  display: flex;
-`;
-
-const Timer = styled(Box)`
-  display: flex;
-  margin-left: 10px;
-  align-items: center;
-  color: #7f7f7f;
-`;
-const DealText = styled(Typography)`
-  font-size: 22px;
-  font-weight: 600;
-  margin-right: 25px;
-  line-height: 32px;
-`;
-
-const ViewAllButton = styled(Button)`
-  margin-left: auto;
-  background: #2874f0;
-  border-radius: 5px;
-  font-size: 13px;
-  font-weight: 600;
-`;
-const Image = styled('img')({
-  width: 'auto',
-  height: 150,
-
-})
-
-
-const Text = styled(Typography)`
-  font-size: 14px;
-  margin-top: 5px;
- 
-`;
-
 const Slide = ({ products, title, timer }) => {
   const renderer = ({ hours, minutes, seconds }) => {
     return (
-      <Box variant="span">
+      <span>
         {hours}:{minutes}:{seconds} Left{" "}
-      </Box>
+      </span>
     );
   };
 
   return (
-    <Component>
-      <Deal>
-        <DealText>{title}</DealText>
+    <div className="mt-2 bg-white">
+      <div className="flex p-4">
+        <h2 className="text-lg font-semibold mr-6">{title}</h2>
         {timer && (
-          <Timer>
+          <div className="flex items-center ml-2 text-gray-500">
             <img
               src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg"
-              alt="timerimage"
-              style={{ width: 24 }}
+              alt="timer"
+              className="w-6"
             />
             <Countdown date={Date.now() + 5.04e7} renderer={renderer} />
-          </Timer>
+          </div>
         )}
-
-        <ViewAllButton variant="contained" color="primary">
+        <button className="ml-auto bg-blue-600 text-white rounded px-4 py-1 text-sm font-semibold">
           View all
-        </ViewAllButton>
-      </Deal>
+        </button>
+      </div>
       <Divider />
       <Carousel
         responsive={responsive}
@@ -110,21 +64,17 @@ const Slide = ({ products, title, timer }) => {
         itemClass="carousel-item-padding-40-px"
       >
         {products?.map((product, index) => (
-          <Link to={`product/${product.id}`} key={index}> 
-            <Box textAlign="center" style={{ padding: "25px 15px" }} key={index} >
-              <Image src={product.url} alt="product"></Image>
-              <Text style={{ fontWeight: "bold", color: "#212121", marginRight: 70}}>
-                {product.title.shortTitle}
-              </Text>
-              <Text style={{ color: "green",marginRight: 70 }}>{product.discount}</Text>
-              <Text style={{ color: "#212121", opacity: 0.6, marginRight: 70 }}>
-                {product.tagline}
-              </Text>
-            </Box>
+          <Link to={`product/${product.id}`} key={index}>
+            <div className="text-center p-6">
+              <img src={product.url} alt="product" className="h-40 mx-auto" />
+              <p className="font-bold text-gray-900 mt-2">{product.title.shortTitle}</p>
+              <p className="text-green-600">{product.discount}</p>
+              <p className="text-gray-700 opacity-60">{product.tagline}</p>
+            </div>
           </Link>
         ))}
       </Carousel>
-    </Component>
+    </div>
   );
 };
 

@@ -1,92 +1,91 @@
 import React from 'react';
-import { Box, Table, TableBody, TableCell, Typography, TableRow , styled,} from '@mui/material';
-import {LocalOffer as Badge} from '@mui/icons-material';
 
+const ProductDetail = ({ product }) => {
+  const date = new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000);
 
-const SmallText = styled(Box)`
-    font-size: 14px;
-    vertical-align: baseline;
-    & > p {
-        font-size: 14px;
-        margin-top: 10px;
-    }
-`;
-
-const StyledBadge = styled(Badge)`
-    margin-right: 10px;
-    color: #00cc00;
-    font-size: 16px;
-`
-
-const ColumnText = styled(TableRow)`
-    font-size: 14px;
-    vertical-align: baseline;
-    & > td {
-        font-size: 14px;
-        margin-top: 10px;
-        border: none;
-    }
-`
-
-const ProductDetail = ({product}) => {
-
-    const date = new Date(new Date().getTime()+(5*24*60*60*1000));
   return (
     <>
-        <Typography>{product.title.longTitle}</Typography>
-             <Typography style={{marginTop: 5, color: '#878787', fontSize: 14}}>
-                8 Rating & 1 Reviews
-                <Box component='span'><img src='https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png' alt='flipkartassured' style={{width: 77}}/></Box>
-        </Typography>
-        <Typography> 
-            <Box component='span' style={{fontSize: 28}}>₹{product.price.cost}</Box>&nbsp;&nbsp;&nbsp;
-            <Box component='span' style={{color: '#878787'}}><strike>₹{product.price.mrp}</strike></Box>&nbsp;&nbsp;&nbsp;
-            <Box component='span' style={{color: '#388e3c'}}>{product.price.discount}</Box>
-        </Typography>
-        <Typography>Avilable Offers</Typography>
-        <SmallText>
-            <Typography><StyledBadge/>Get extra 20% off upto ₹58 on 1 item(s) T&C</Typography>
-            <Typography><StyledBadge/>Get extra 13% off (price inclusive of discount) T&C</Typography>
-            <Typography><StyledBadge/>Sign up for filpkart Pay Later and get Flipkart Gift Card worth ₹100* Know More</Typography>
-            <Typography><StyledBadge/>Buy 2 items save 5%; Buy 3 or more save 10%</Typography>
-            <Typography><StyledBadge/>5% Cashback on Flipkart Axis Bank Card</Typography>
-            <Typography><StyledBadge/>No Cost EMI on Bajaj Finsery EMI Card on cart value above ₹2999</Typography>
-        </SmallText>
+      <h1 className="text-xl font-semibold">{product.title.longTitle}</h1>
+      <p className="mt-1 text-gray-600 text-sm">
+        8 Rating & 1 Reviews
+        <span>
+          <img
+            src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png"
+            alt="flipkartassured"
+            className="w-20"
+          />
+        </span>
+      </p>
+      <p className="text-lg">
+        <span className="text-2xl">₹{product.price.cost}</span>
+        <span className="text-gray-600 ml-2 line-through">₹{product.price.mrp}</span>
+        <span className="text-green-600 ml-2">{product.price.discount}</span>
+      </p>
+      <p className="mt-4 text-lg font-semibold">Available Offers</p>
+      <div className="text-sm mt-2">
+        <p className="flex items-center mb-2">
+          <span className="text-green-500 mr-2 text-lg">•</span>
+          Get extra 20% off up to ₹58 on 1 item(s) T&C
+        </p>
+        <p className="flex items-center mb-2">
+          <span className="text-green-500 mr-2 text-lg">•</span>
+          Get extra 13% off (price inclusive of discount) T&C
+        </p>
+        <p className="flex items-center mb-2">
+          <span className="text-green-500 mr-2 text-lg">•</span>
+          Sign up for Flipkart Pay Later and get Flipkart Gift Card worth ₹100* Know More
+        </p>
+        <p className="flex items-center mb-2">
+          <span className="text-green-500 mr-2 text-lg">•</span>
+          Buy 2 items save 5%; Buy 3 or more save 10%
+        </p>
+        <p className="flex items-center mb-2">
+          <span className="text-green-500 mr-2 text-lg">•</span>
+          5% Cashback on Flipkart Axis Bank Card
+        </p>
+        <p className="flex items-center mb-2">
+          <span className="text-green-500 mr-2 text-lg">•</span>
+          No Cost EMI on Bajaj Finserv EMI Card on cart value above ₹2999
+        </p>
+      </div>
 
-        <Table>
-            <TableBody>
-                <ColumnText>
-                    <TableCell style={{color: '#878787'}}>Delivery </TableCell>
-                    <TableCell style={{fontWeight: 600}}>Deliver By {date.toDateString()} | ₹40</TableCell>
-                </ColumnText>
-                <ColumnText>
-                    <TableCell style={{color: '#878787'}}>Warranty </TableCell>
-                    <TableCell>No Warranty</TableCell>
-                </ColumnText>
-                <ColumnText>
-                    <TableCell style={{color: '#878787'}}>Seller </TableCell>
-                    <TableCell>
-                        <Box component='span' style={{color: '#2874f0'}}>SuperComNet</Box>
-                        <Typography>GST invoice avilable</Typography>
-                        <Typography>View more seller starting from ₹{product.price.cost}</Typography>
-                    </TableCell>
-                </ColumnText>
-                <ColumnText>
-                    <TableCell colSpan={2}>
-                        <img src='https://rukminim1.flixcart.com/lockin/774/185/images/CCO__PP_2019-07-14.png?q=50' style={{width: 390, display: 'inherit'}} alt='flipkartscoins'/>
-                    </TableCell>
-                </ColumnText>
-                <ColumnText>
-                    <TableCell style={{color: '#878787'}}>Discription </TableCell>
-                    <TableCell>{product.description}</TableCell>
-                </ColumnText>
-            </TableBody>
-        </Table>
-        
+      <div className="mt-6">
+        <table className="w-full border-collapse">
+          <tbody>
+            <tr className="text-sm">
+              <td className="text-gray-600 py-2 px-4 border-b">Delivery</td>
+              <td className="font-semibold py-2 px-4 border-b">Deliver By {date.toDateString()} | ₹40</td>
+            </tr>
+            <tr className="text-sm">
+              <td className="text-gray-600 py-2 px-4 border-b">Warranty</td>
+              <td className="py-2 px-4 border-b">No Warranty</td>
+            </tr>
+            <tr className="text-sm">
+              <td className="text-gray-600 py-2 px-4 border-b">Seller</td>
+              <td className="py-2 px-4 border-b">
+                <span className="text-blue-600">SuperComNet</span>
+                <p>GST invoice available</p>
+                <p>View more sellers starting from ₹{product.price.cost}</p>
+              </td>
+            </tr>
+            <tr className="text-sm">
+              <td colSpan="2" className="py-2 px-4 border-b">
+                <img
+                  src="https://rukminim1.flixcart.com/lockin/774/185/images/CCO__PP_2019-07-14.png?q=50"
+                  alt="flipkartscoins"
+                  className="w-96"
+                />
+              </td>
+            </tr>
+            <tr className="text-sm">
+              <td className="text-gray-600 py-2 px-4 border-b">Description</td>
+              <td className="py-2 px-4 border-b">{product.description}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </>
+  );
+};
 
-
-  )
-}
-
-export default ProductDetail
+export default ProductDetail;

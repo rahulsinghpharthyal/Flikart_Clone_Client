@@ -1,24 +1,19 @@
 import React from 'react';
-import { Button, ButtonGroup, styled} from '@mui/material';
 
-
-const Component = styled(ButtonGroup)`
-    margin-top: 30px;
-    font-size: 14px;
-
-`
-const StyledButton = styled(Button)`
-  border-radius: 50%; 
-`
 const GroupOfButton = () => {
   return (
-    <Component>
-        <StyledButton>-</StyledButton>
-        <StyledButton>1</StyledButton>
-        <StyledButton>+</StyledButton>
-    </Component>
-
-  )
-}
+    <div className="flex mt-8 text-sm">
+      <button className="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center mx-1">
+        -
+      </button>
+      <button className="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center mx-1">
+        1
+      </button>
+      <button className="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center mx-1">
+        +
+      </button>
+    </div>
+  );
+};
 
 export default GroupOfButton;

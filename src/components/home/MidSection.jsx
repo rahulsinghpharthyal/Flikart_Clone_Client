@@ -1,42 +1,23 @@
 import React from 'react';
 import { imageURL } from '../../constants/data';
-import { Grid, styled} from '@mui/material';
-
-const Wrapper = styled(Grid)`
-    margin-top: 10px;
-    justify-content: space-between;
-`
-
-const Image = styled('img')(({theme})=> ({
-
-    marginTop: 10,
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
-   [theme.breakpoints.down('md')]: {
-    objectFit: 'cover',
-    height: '120px'
-   }
-    
-}));
-
 
 const MidSection = () => {
   return (
-<>
-    <Wrapper lg={12} md={12} xs={12} container>
-        {
-            imageURL.map((image, index)=>(
-                <Grid item lg={4} md={4} sm={12} xs={12} key={index}>
-
-                <img src={image} key={index} alt='image' style={{width: '100%'}}/>
-                </Grid>
-            ))
-        }
-    </Wrapper>
-    <Image src='https://rukminim1.flixcart.com/flap/3006/433/image/4789bc3aefd54494.jpg?q=50' alt='covid'/>
-</>
-  )
-}
+    <>
+      <div className="flex flex-wrap justify-between mt-2">
+        {imageURL.map((image, index) => (
+          <div key={index} className="w-full lg:w-1/3 md:w-1/3 sm:w-full p-1">
+            <img src={image} alt={`image-${index}`} className="w-full h-auto" />
+          </div>
+        ))}
+      </div>
+      <img
+        src="https://rukminim1.flixcart.com/flap/3006/433/image/4789bc3aefd54494.jpg?q=50"
+        alt="covid"
+        className="mt-2 w-full h-40 object-cover"
+      />
+    </>
+  );
+};
 
 export default MidSection;

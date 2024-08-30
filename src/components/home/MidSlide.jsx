@@ -1,41 +1,20 @@
 import React from "react";
 import Slide from "./Slide";
-import { Box, styled } from "@mui/material";
-
-const Component = styled(Box)`
-    display: flex;
-`
-const LeftComponent = styled(Box)(({theme})=>({
-    width: '85%',
-    [theme.breakpoints.down('md')]: {
-        width: '100%',
-    }
-}));
-
-const RightComponent = styled(Box)(({theme})=>({
-    background: '#fff',
-    padding: 5,
-    marginTop: 10,
-    marginLeft: 10,
-    width: '15%',
-    textAlign: 'center',
-    [theme.breakpoints.down('md')]: {
-        display: 'none',
-
-    }
-
-}));
 
 const MidSlide = ({ products, title, timer }) => {
   return (
-    <Component>
-      <LeftComponent>
+    <div className="flex">
+      <div className="w-full md:w-5/6">
         <Slide products={products} title={title} timer={true} />
-      </LeftComponent>
-      <RightComponent >
-        <img src="https://rukminim1.flixcart.com/flap/464/708/image/633789f7def60050.jpg?q=70" alt="ad" style={{width: 217}}/>
-      </RightComponent >
-    </Component>
+      </div>
+      <div className="bg-white p-2 mt-2 ml-2 w-1/6 text-center hidden md:block">
+        <img
+          src="https://rukminim1.flixcart.com/flap/464/708/image/633789f7def60050.jpg?q=70"
+          alt="ad"
+          className="w-[217px]"
+        />
+      </div>
+    </div>
   );
 };
 

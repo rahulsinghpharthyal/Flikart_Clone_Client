@@ -1,31 +1,21 @@
-import { Typography, Box, styled } from '@mui/material';
 import React from 'react';
 
-const Component = styled(Box)`
-    height: 80vh;
-    width: 80%;
-    background: #fff;
-    margin: 80px 140px;
-`;
-
-const Container = styled(Box)`
-    text-align: center;
-    padding-top: 70px;
- 
-    }
-`
-
 const EmptyCart = () => {
-    const imageURl = 'https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90'
+  const imageURL = 'https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90';
+
   return (
-    <Component>
-        <Container>
-            <img src={imageURl} alt='empty' style={{width: '15%', margin: 'auto'}}/>
-            <Typography>Your Cart is empty</Typography>
-            <Typography>Add items to it now</Typography>
-        </Container>
-    </Component>
-  )
-}
+    <div className="h-[80vh] w-[80%] bg-white mx-auto my-20 px-10">
+      <div className="text-center pt-16">
+        <img
+          src={imageURL}
+          alt='empty'
+          className="w-1/6 mx-auto"
+        />
+        <p className="text-lg font-medium mt-4">Your Cart is empty</p>
+        <p className="text-md mt-2">Add items to it now</p>
+      </div>
+    </div>
+  );
+};
 
 export default EmptyCart;
