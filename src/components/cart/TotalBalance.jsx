@@ -6,7 +6,7 @@ const TotalBalance = ({ cartItems }) => {
 
   useEffect(() => {
     totalAmount();
-  }, [cartItems]);
+  }, [cartItems, totalAmount]);
 
   const totalAmount = () => {
     let price = 0, discount = 0;
