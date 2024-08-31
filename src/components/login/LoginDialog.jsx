@@ -36,7 +36,7 @@ const LoginDialog = ({ open, setOpen }) => {
   const [login, setLogin] = useState(logininitialValues);
   const [error, setError] = useState(false);
 
-  const { acc, setAcc } = useContext(DataContext);
+  const { setAcc } = useContext(DataContext);
 
   const handleClose = () => {
     setOpen(!open);
