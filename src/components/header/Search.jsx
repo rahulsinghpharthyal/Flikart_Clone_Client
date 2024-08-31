@@ -82,18 +82,23 @@
 
 import React, { useEffect, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search'; // You can keep using this or replace with an SVG if needed
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 import { getProducts } from '../../redux/actions/productaction';
 import { Link } from 'react-router-dom';
+import { CloseFullscreen } from '@mui/icons-material';
 
 const Search = () => {
   const [text, setText] = useState('');
-  const { products } = useSelector((state) => state.getProducts);
-  const dispatch = useDispatch();
+  // const { products } = useSelector((state) => state.getProducts);
+  // const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    // dispatch(getProducts());
+    console.log('ths is my')
+  }, 
+  // [dispatch]
+  []
+);
 
   const getText = (text) => {
     setText(text);
@@ -113,7 +118,7 @@ const Search = () => {
       />
       {text && (
         <div className="absolute top-full left-0 right-0 mt-1 bg-white text-black max-h-60 overflow-y-auto border border-gray-300 rounded-md">
-          {products
+          {/* {products
             .filter((product) =>
               product.title.longTitle.toLowerCase().includes(text.toLowerCase())
             )
@@ -126,7 +131,7 @@ const Search = () => {
               >
                 {product.title.longTitle}
               </Link>
-            ))}
+            ))} */}
         </div>
       )}
     </div>

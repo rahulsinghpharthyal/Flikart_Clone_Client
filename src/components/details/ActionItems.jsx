@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../../redux/actions/cartAction';
+// import { useDispatch } from 'react-redux';
+// import { addToCart } from '../../redux/actions/cartAction';
 import { payUsingPaytm } from '../../service/api';
 import { post } from '../../utils/paytm';
 
@@ -9,13 +9,13 @@ import { ShoppingCart as Cart, FlashOn as Flash } from '@mui/icons-material'; //
 
 const ActionItems = ({ product }) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
 
   const { id } = product;
 
   const addItemToCart = () => {
-    dispatch(addToCart(id, quantity));
+    // dispatch(addToCart(id, quantity));
     navigate('/cart');
   };
 
