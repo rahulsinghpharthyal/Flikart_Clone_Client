@@ -20,7 +20,7 @@ const Header = () => {
     return (
         <>
             {/* Header Bar */}
-            <header className="bg-white w-full shadow-md px-10">
+            <header className="bg-white w-full shadow-md px-20">
                 <div className="flex items-center justify-between p-4">
                     {/* Menu Button for Mobile */}
                     <button
