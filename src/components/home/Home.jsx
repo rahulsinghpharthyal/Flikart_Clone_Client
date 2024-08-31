@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../../redux_new/actions/productActions';
+import { getProducts } from '../../redux/actions/productActions';
 // components
 import Navbar from './Navbar';
 import Banner from './Banner';

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getProductById } from '../../redux_new/actions/productActions';
+import { getProductById } from '../../redux/actions/productActions';
 import ActionItems from './ActionItems';
 import ProductDetail from './ProductDetail';
 
