@@ -7,11 +7,11 @@ const MidSlide = ({ products, title, timer }) => {
       <div className="w-full md:w-5/6">
         <Slide products={products} title={title} timer={true} />
       </div>
-      <div className="bg-white p-2 mt-2 ml-2 w-1/6 text-center hidden md:block">
+      <div className="bg-white mt-2 ml-2 w-1/6 text-center hidden md:block p-1">
         <img
           src="https://rukminim1.flixcart.com/flap/464/708/image/633789f7def60050.jpg?q=70"
           alt="ad"
-          className="w-[217px]"
+          className="w-full"
         />
       </div>
     </div>

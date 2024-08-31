@@ -1,6 +1,6 @@
 
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import CartItem from './CartItem';
 import TotalBalance from './TotalBalance';
 import EmptyCart from './EmptyCart';
@@ -8,9 +8,8 @@ import { payUsingPaytm } from '../../service/api';
 import { post } from '../../utils/paytm';
 
 const Cart = () => {
-  // const { cartItems } = useSelector(state => state.cart);
+  const { cartItems } = useSelector(state => state.cart);
 
-  const cartItems = ["apple", "mmy"]
 
   const buyNow = () => {
     const response = payUsingPaytm({ amount: 500, email: 'rahul@gmail.com'})

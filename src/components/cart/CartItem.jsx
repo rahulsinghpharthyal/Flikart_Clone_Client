@@ -1,14 +1,14 @@
 import React from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addEllipsis } from '../../utils/common-utils';
 import GroupOfButton from './GroupOfButton';
-// import { removeFromCart } from '../../redux/actions/cartAction';
+import { removeFromCart } from '../../redux_new/actions/cartAction';
 
 const CartItem = ({ item }) => {
-  // const dispatch = useDispatch();
-
+  const dispatch = useDispatch();
+  console.log('this is item', item)
   const removeItemFromCart = (id) => {
-    // dispatch(removeFromCart(id));
+    dispatch(removeFromCart(id));
     console.log('item removed')
   }
 
