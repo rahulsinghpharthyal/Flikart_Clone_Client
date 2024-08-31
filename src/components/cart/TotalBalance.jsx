@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 const TotalBalance = ({ cartItems }) => {
-  const [price, setPrice] = useState(0);
-  const [discount, setDiscount] = useState(0);
+  // const [price, setPrice] = useState(0);
+  // const [discount, setDiscount] = useState(0);
 
   useEffect(() => {
-    totalAmount();
-  }, [cartItems, totalAmount]);
+    // totalAmount();
+  }, [cartItems]);
 
-  const totalAmount = () => {
-    let price = 0, discount = 0;
-    cartItems.forEach((item) => {
-      price += item.price.mrp;
-      discount += (item.price.mrp - item.price.cost);
-    });
-    setPrice(price);
-    setDiscount(discount);
-  };
+  // const totalAmount = () => {
+  //   let price = 0, discount = 0;
+  //   cartItems.forEach((item) => {
+  //     price += item.price.mrp;
+  //     discount += (item.price.mrp - item.price.cost);
+  //   });
+  //   setPrice(price);
+  //   setDiscount(discount);
+  // };
 
   return (
     <div className="bg-white p-4">
@@ -25,12 +25,15 @@ const TotalBalance = ({ cartItems }) => {
       </div>
       <div>
         <p className="text-sm mb-4 flex justify-between">
-          Price ({cartItems?.length} item)
-          <span>₹{price}</span>
+          {/* Price ({cartItems?.length} item) */}
+          Price (23 item)
+          {/* <span>₹{price}</span> */}
+          <span>₹23</span>
         </p>
         <p className="text-sm mb-4 flex justify-between">
           Discount
-          <span className="text-green-500">₹{discount}</span>
+          <span className="text-green-500">₹23</span>
+          {/* <span className="text-green-500">₹{discount}</span> */}
         </p>
         <p className="text-sm mb-4 flex justify-between">
           Delivery Charges
@@ -38,10 +41,10 @@ const TotalBalance = ({ cartItems }) => {
         </p>
         <p className="text-base font-semibold mb-4 flex justify-between">
           Total Amount
-          <span>₹{price - discount + 40}</span>
+          {/* <span>₹{price - discount + 40}</span> */}
         </p>
         <p className="text-green-500 font-medium">
-          You will save ₹{discount - 40}
+          {/* You will save ₹{discount - 40} */}
         </p>
       </div>
     </div>

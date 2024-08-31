@@ -83,9 +83,9 @@
 import React, { useEffect, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search'; // You can keep using this or replace with an SVG if needed
 // import { useSelector, useDispatch } from 'react-redux';
-import { getProducts } from '../../redux/actions/productaction';
-import { Link } from 'react-router-dom';
-import { CloseFullscreen } from '@mui/icons-material';
+// import { getProducts } from '../../redux/actions/productaction';
+// import { Link } from 'react-router-dom';
+// import { CloseFullscreen } from '@mui/icons-material';
 
 const Search = () => {
   const [text, setText] = useState('');

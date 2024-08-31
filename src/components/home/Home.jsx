@@ -5,8 +5,8 @@ import React, { useEffect } from 'react';
 import Navbar from './Navbar';
 import Banner from './Banner';
 // import { getProducts } from '../../redux/actions/productaction';
-import Slide from './Slide';
-import MidSlide from './MidSlide';
+// import Slide from './Slide';
+// import MidSlide from './MidSlide';
 import MidSection from './MidSection';
 
 const Home = () => {

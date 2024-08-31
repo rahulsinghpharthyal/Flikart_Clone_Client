@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 // import { getProductDetails } from '../../redux/actions/productaction';
-import ActionItems from './ActionItems';
-import ProductDetail from './ProductDetail';
+// import ActionItems from './ActionItems';
+// import ProductDetail from './ProductDetail';
 
 const DetailView = () => {
   // const dispatch = useDispatch();
-  const { id } = useParams();
+  // const { id } = useParams();
   // const { loading, product } = useSelector((state) => state.getProductDetails);
 
   useEffect(() => {
