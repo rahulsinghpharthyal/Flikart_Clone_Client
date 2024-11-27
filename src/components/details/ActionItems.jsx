@@ -3,12 +3,10 @@ import { useDispatch  } from 'react-redux';
 import { addToCart } from '../../redux/actions/cartAction';
 import { payUsingPaytm } from '../../service/api';
 import { post } from '../../utils/paytm';
-import {useNavigate} from 'react-router-dom';
 
 import { ShoppingCart as Cart, FlashOn as Flash } from '@mui/icons-material'; // Optional: Only if you want to use icons
 
 const ActionItems = ({ product }) => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [quantity] = useState(1);
 
