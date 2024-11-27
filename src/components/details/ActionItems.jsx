@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/actions/cartAction';
 import { payUsingPaytm } from '../../service/api';
@@ -10,7 +9,7 @@ import { ShoppingCart as Cart, FlashOn as Flash } from '@mui/icons-material'; //
 const ActionItems = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState(1);
+  const [quantity] = useState(1);
 
   const { id } = product;
 
